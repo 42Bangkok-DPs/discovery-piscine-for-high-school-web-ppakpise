@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+    <style>
+        /* Styling the balloon */
+        .balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%; /* To make it a perfect circle */
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s; /* Smooth transitions */
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="balloon" id="balloon"></div>
+
+<script>
+    let balloon = document.getElementById('balloon');
+    let currentSize = 200; // Starting size
+    let colors = ['red', 'green', 'blue']; // The color sequence for click
+    let reverseColors = ['red', 'blue', 'green']; // The reverse color sequence for mouse leave
+    let colorIndex = 0; // Track the color for clicks
+    let reverseColorIndex = 0; // Track the color for mouse leave
+
+    // Function to change the size and color on click
+    balloon.addEventListener('click', () => {
+        // Grow the balloon
+        currentSize += 10;
+
+        // If size exceeds 420px, reset to 200px
+        if (currentSize > 420) {
+            currentSize = 200;
+            balloon.style.width = currentSize + 'px';
+            balloon.style.height = currentSize + 'px';
+            balloon.style.backgroundColor = 'red'; // Reset to red on explosion
+            colorIndex = 0; // Reset color index on explosion
+        } else {
+            // Update the size
+            balloon.style.width = currentSize + 'px';
+            balloon.style.height = currentSize + 'px';
+
+            // Update the color in the sequence (click event)
+            balloon.style.backgroundColor = colors[colorIndex];
+
+            // Move to the next color in the sequence
+            colorIndex = (colorIndex + 1) % colors.length;
+        }
+    });
+
+
+
+</script>
+
+</body>
+</html>

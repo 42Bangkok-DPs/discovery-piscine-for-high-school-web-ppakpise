@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        /* Basic styling for the calculator */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input, select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 32px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Basic Calculator</h1>
+
+<!-- Input for the left operand -->
+<input type="text" id="leftOperand" placeholder="Enter left operand" />
+
+<!-- Select dropdown for choosing the operator -->
+<select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+</select>
+
+<!-- Input for the right operand -->
+<input type="text" id="rightOperand" placeholder="Enter right operand" />
+
+<!-- Submit button -->
+<input type="submit" value="Try me!" id="calculateBtn" />
+
+<script>
+    // Function to handle the calculation
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+        const leftOperand = document.getElementById('leftOperand').value;
+        const rightOperand = document.getElementById('rightOperand').value;
+        const operator = document.getElementById('operator').value;
+
+        // Validate inputs (must be positive integers)
+        if (!Number.isInteger(+leftOperand) || +leftOperand < 0 || !Number.isInteger(+rightOperand) || +rightOperand < 0) {
+            alert("Error :(");
+            return; // Exit the function if invalid inputs
+        }
+
+        // Handle division and modulo by zero
+        if ((operator === '/' || operator === '%') && +rightOperand === 0) {
+            alert("It’s over 9000!");
+            console.log("It’s over 9000!");
+            return;
+        }
+
+        // Perform the calculation
+        let result;
+        switch (operator) {
+            case '+':
+                result = +leftOperand + +rightOperand;
+                break;
+            case '-':
+                result = +leftOperand - +rightOperand;
+                break;
+            case '*':
+                result = +leftOperand * +rightOperand;
+                break;
+            case '/':
+                result = +leftOperand / +rightOperand;
+                break;
+            case '%':
+                result = +leftOperand % +rightOperand;
+                break;
+            default:
+                result = "Unknown operator";
+        }
+
+        // Display the result in an alert and log it to the console
+        alert("Result: " + result);
+        console.log("Result: " + result);
+    });
+
+    // Function to display the reminder every 30 seconds
+    setInterval(() => {
+        alert("Please, use me...");
+    }, 30000); // 30000ms = 30 seconds
+
+</script>
+
+</body>
+</html>
