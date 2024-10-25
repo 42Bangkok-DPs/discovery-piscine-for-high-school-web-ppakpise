@@ -1,0 +1,74 @@
+/* Global Styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5); /* Background gradient */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Container for everything */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the OMG! text */
+#omg-text {
+    font-size: 4em;
+    color: #ff5733; /* Bright orange */
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out; /* Smooth fade-in animation */
+}
+
+#Hello-text {
+    font-size: 2em;
+    color: black; /* Bright orange */
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out; /* Smooth fade-in animation */
+}
+
+#pa {
+    font-size: 2em;
+    color: red; /* Bright orange */
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out; /* Smooth fade-in animation */
+}
+
+
+/* Styling the images */
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.image-container img {
+    width: 200px; /* Adjust image size */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.image-container img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
