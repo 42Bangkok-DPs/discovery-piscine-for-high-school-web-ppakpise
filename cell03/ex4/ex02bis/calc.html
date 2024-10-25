@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator with jQuery</title>
+    <style>
+    
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input, select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 32px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h1>Basic Calculator</h1>
+
+
+<input type="text" id="leftOperand" placeholder="Enter left operand" />
+
+
+<select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+</select>
+
+
+<input type="text" id="rightOperand" placeholder="Enter right operand" />
+
+
+<input type="submit" value="Try me!" id="calculateBtn" />
+
+<script>
+    $(document).ready(function() {
+        
+        $('#calculateBtn').click(function() {
+            const leftOperand = $('#leftOperand').val();
+            const rightOperand = $('#rightOperand').val();
+            const operator = $('#operator').val();
+
+            
+            if (!Number.isInteger(+leftOperand) || +leftOperand < 0 || !Number.isInteger(+rightOperand) || +rightOperand < 0) {
+                alert("Error :(");
+                console.log("Error");
+                return; 
+            }
+
+            
+            if ((operator === '/' || operator === '%') && +rightOperand === 0) {
+                alert("It’s over 9000!");
+                console.log("It’s over 9000!");
+                return;
+            }
+
+            
+            let result;
+            switch (operator) {
+                case '+':
+                    result = +leftOperand + +rightOperand;
+                    break;
+                case '-':
+                    result = +leftOperand - +rightOperand;
+                    break;
+                case '*':
+                    result = +leftOperand * +rightOperand;
+                    break;
+                case '/':
+                    result = +leftOperand / +rightOperand;
+                    break;
+                case '%':
+                    result = +leftOperand % +rightOperand;
+                    break;
+                default:
+                    result = "Unknown operator";
+            }
+
+            
+            alert("Result: " + result);
+            console.log("Result: " + result);
+        });
+
+        
+        setInterval(function() {
+            alert("Please, use me...");
+        }, 30000); 
+    });
+</script>
+
+</body>
+</html>
